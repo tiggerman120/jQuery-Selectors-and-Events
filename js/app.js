@@ -43,14 +43,14 @@ function fillSelect() {
         console.log(animalsArr[i]);
         let newOption = $('#default1').clone();
         newOption.text(animalsArr[i].title);
-        newOption.attr('value', animalsArr[i].title);
+        newOption.attr('value', animalsArr[i].keyword);
         $('#list').append(newOption);
     }
 }
 function filterImage() {
-    $('select').on('change', function () {
-        let keyword = $(this).val();
-        $('section').hide();
+    $('select').on('change', function (event) {
+        let keyword = $('select').val();
+        $('div').hide();
         $(`.${keyword}`).show();
     }
     )
