@@ -1,4 +1,7 @@
 'use strict';
+let templateId = '#animal-template';
+let animalsArr = [];
+
 let animalsArr = [];
 Animals.readJson = () => {
     const ajaxSettings = {
