@@ -1,19 +1,20 @@
-'use strict'
+'use strict';
 
+let animalsArr =[];
 Animals.readJson = () => {
     const ajaxSettings = {
         method: 'get',
         dataType: 'json'
     }
 
-    $.ajax('page-1.json', ajaxSettings)
-        .then(data => {
-            data.forEach(item => {
-                let Animal = new Animal(item);
-                console.log(Animal)
-                Animal.render();
-            })
+    $.ajax('data/page-1.json', ajaxSettings)
+    .then(data => {
+        data.forEach(item => {
+            let Animal = new Animals(item);
+            console.log(Animal);
+            Animal.render();
         })
+    }).then(fillSelect).then(filterImage)
 }
 
 
@@ -23,21 +24,46 @@ function Animals(Animal) {
     this.description = Animal.description;
     this.keyword = Animal.keyword;
     this.horns = Animal.horns;
+    animalsArr.push(this);
 }
 
 
-Animal.prototype.render = function() {
-    let $AnimalClone = $('div/div');
-    $AnimalClone.html($('photo.template').html());
+Animals.prototype.render = function() {
+    let $AnimalClone = $('<div></div>');
+    $AnimalClone.html($('#photo.template').html());
     //console.log (Animal);
     $AnimalClone.find('h2').text(this.title);
     $AnimalClone.find('img').attr('src', this.image_url);
     $AnimalClone.find('img').attr('alt', this.description);
-    $AnimalClone.find('p').number(this.keyword);
-    $AnimalClone.find('p').number(this.horns);
-    $AnimalClone.removeClass('photo-template');
-    $AnimalClone.attr('class', this.title);
+    $AnimalClone.find('p').text(this.keyword);
+    $AnimalClone.find('p').text(this.horns);
+    $AnimalClone.removeClass('#photo-template');
+    $AnimalClone.attr('class', this.keyword);
+    $AnimalClone.attr('id', this.title);
     $('main').append($AnimalClone)
 }
 
-$(() => Animal.readJason());
+function fillSelect() {
+    console.log(animalsArr)
+    // animalArr.forEach(function(object) {
+        for (let i = 0; i < animalsArr.length; i++) {
+            console.log(animalsArr);
+            console.log(animalsArr[i]);
+            let newOption = $('#default1').clone();
+            newOption.attr(animalsArr[i].title);
+            $('#list').append(newOption);
+        }
+}
+function filterImage() {
+    $('select').on('change', function () {
+        let keyword = $(this).val();
+        $('section').hide();
+        $(`.${keyword}`).show();
+    })
+}
+$(() => Animals.readJson());
+
+//$('select').on('change', function() {
+ // var keyword= $(this).val()
+
+//})
