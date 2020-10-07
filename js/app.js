@@ -12,7 +12,7 @@ Animals.readJson = () => {
     .then(data => {
       data.forEach(item => {
         let Animal = new Animals(item);
-        console.log(Animal);
+        // console.log(Animal);
         Animal.render();
       })
     }).then(fillSelect).then(filterImage)
@@ -35,7 +35,7 @@ Animals.prototype.render = function () {
   $AnimalClone.find('img').attr('alt', this.description);
   $AnimalClone.find('p').text(this.keyword);
   $AnimalClone.find('p').text(this.horns);
-  $AnimalClone.removeClass('photo-template');
+  $AnimalClone.removeClass('#photo-template');
   $AnimalClone.attr('class', this.keyword);
   $AnimalClone.attr('id', this.title);
   $('main').append($AnimalClone)
@@ -48,25 +48,28 @@ function fillSelect() {
   
   // animalsArr.forEach(function(object) { 
     for (let i = 0; i < animalsArr.length; i++) {
-      console.log(animalsArr);
-      console.log(animalsArr[i]);
+      // console.log(animalsArr);
+      // console.log(animalsArr[i]);
       let newOption = $('#default1').clone();
       newOption.text(animalsArr[i].title);
-      newOption.attr('value', animalsArr[i].title);
+      // newOption.attr('class', animalsArr[i].keyword);
+      newOption.attr('value', animalsArr[i].keyword);
       $('#list').append(newOption);
     }
   }
   function filterImage() {
-    $('select').on('change', function () {
-      let keyword = $(this).val();
-      $('section').hide();
-      $($`.${keyword}`).show();
-    }
-    )
+    $('select').on('change', function (event) {
+    console.log(event);
+      let keyword = $('select').val();
+      console.log(keyword);
+      $('div').hide();
+      $(`.${keyword}`).show();
+    })
   }
   
   
   $(() => Animals.readJson());
+  
 
 
 //filterimage

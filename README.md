@@ -12,3 +12,13 @@ Finish time: 17:10
 Actual TTC: 2 hour including breaks
 
 ## feature 2 Filter images
+
+estimated time to complete: 2 hours
+
+start time: 17:15
+
+finish time 14:10 the next day
+
+Actual TTC: like 6 hours
+
+## feature 3 Style the application
