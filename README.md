@@ -32,4 +32,8 @@ Estimated time to complete: 90 minutes
 Start time: 3:45pm MST
 End time: 6:10pm MST
 Actual Time: (20 minutes break) 2 hours
+--------------------------------------------------------------------------------------------------------------------------------------------
+inicial set up 30 minutes
+TA assistance with Bade for 40 minutes
+
 
