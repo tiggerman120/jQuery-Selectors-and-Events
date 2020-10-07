@@ -1,7 +1,5 @@
 'use strict';
 let animalsArr = [];
-
-
 Animals.readJson = () => {
   const ajaxSettings = {
     method: 'get',
@@ -17,16 +15,14 @@ Animals.readJson = () => {
       })
     }).then(fillSelect).then(filterImage)
 }
-
 function Animals(Animal) {
-  this.image_url = Animal.image_url;
-  this.title = Animal.title;
-  this.description = Animal.description;
-  this.keyword = Animal.keyword;
-  this.horns = Animal.horns;
-  animalsArr.push(this);
+    this.image_url = Animal.image_url;
+    this.title = Animal.title;
+    this.description = Animal.description;
+    this.keyword = Animal.keyword;
+    this.horns = Animal.horns;
+    animalsArr.push(this);
 }
-
 Animals.prototype.render = function () {
   let $AnimalClone = $('<div></div>');
   $AnimalClone.html($('#photo-template').html());
@@ -39,15 +35,12 @@ Animals.prototype.render = function () {
   $AnimalClone.attr('class', this.keyword);
   $AnimalClone.attr('id', this.title);
   $('main').append($AnimalClone)
-}
-
-
-
-function fillSelect() {
-  console.log(animalsArr)
   
-  // animalsArr.forEach(function(object) { 
+function fillSelect() {
+    console.log(animalsArr)
+    // animalsArr.forEach(function(object) { 
     for (let i = 0; i < animalsArr.length; i++) {
+
       // console.log(animalsArr);
       // console.log(animalsArr[i]);
       let newOption = $('#default1').clone();
@@ -67,10 +60,18 @@ function fillSelect() {
     })
   }
   
-  
   $(() => Animals.readJson());
   
+        console.log(animalsArr);
+        console.log(animalsArr[i]);
+        let newOption = $('#default1').clone();
+        newOption.text(animalsArr[i].title);
+        newOption.attr('value', animalsArr[i].title);
+        $('#list').append(newOption);
+    }
+}
 
+$(() => Animals.readJson());
 
 //filterimage
 // $('select').tmpl(data).each(Animals.readJson (Animal.keyword) {
