@@ -16,13 +16,13 @@ Actual TTC: 2 hour including breaks
 Estimated time to complete: 2 hours
 Start time: Number and Name of Feature: Feature 2 Filter Images
 Estimated time to complete: 90 minutes
-Start time: 6:35 MST
-End time: 10:30 MST
-Actual Time: 4 hours
+Start time: 6:35 pm MST
+End time: 10:30 pm MST
+Actual Time: 4 hours +
 
 TA assistance: 
 Chance during part 1 for 20 min+
-Nicco during Part 2 from 7:48 until 8:40 +
+Nicco during Part 2 from 8:40 +
 Brai and Alex until 10:27
 
 -------------------------------------------------------------------------------------------------------------------------------------------
