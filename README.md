@@ -1,5 +1,7 @@
 # jQuery-Selectors-and-Events
+
 Gallery of Horns
+This website displays images. provides a selector to filter through those images. sorts those images by title and horns Provides unique images on a second page. we mustachetemplate and flexbox for style.
 
 ## feature 1 display images
 
