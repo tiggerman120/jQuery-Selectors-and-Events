@@ -7,6 +7,15 @@
     <title>The Gallery of Horns</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/module.css">
+    <script id="animals-template" type="x-tmpl-mustache">
+        <section>
+          <h2>{{ title }}</h2>
+          <img src="{{ image_url }}" alt="{{ keyword }}">
+          <p>about: {{ description }}</p>
+          <p>keyword: {{ keyword }}</p>
+          <p>number-of-horns: {{ horns }}</p>
+        </section>
+    </script>
 </head>
 
 <body>
