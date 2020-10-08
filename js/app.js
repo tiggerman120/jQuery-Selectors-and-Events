@@ -1,4 +1,9 @@
 'use strict';
+<<<<<<< HEAD
+let templateId = '#animal-template';
+let animalsArr = [];
+=======
+>>>>>>> 104a459b5cf29915caa53a78df5f8b205f5c700a
 
 let animalsArr = [];
 
