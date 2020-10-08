@@ -34,13 +34,7 @@ Animals.readJson2 = () => {
       $('#photo-template2').hide()
     }).then(fillSelect2).then(filterImage2)
 }
-// $.ajax('data/page-2.json', ajaxSettings)
-//   .then(data =>) {
-//     data.forEach(item => {
-//       let Animal = new Animals(item);
-//       Animal.render();
-//     })
-//   }
+
 function Animals(Animal) {
   this.image_url = Animal.image_url;
   this.title = Animal.title;
