@@ -1,6 +1,10 @@
 'use strict';
 
 let animalsArr = [];
+
+let templateId = '#animals-template';
+
+
 Animals.readJson = () => {
 
   const ajaxSettings = {
@@ -12,8 +16,7 @@ Animals.readJson = () => {
     .then(data => {
       data.forEach(item => {
         let Animal = new Animals(item);
-        console.log(Animal);
-        Animal.render();
+        $('main').append(Animal.render())
       })
       $('#photo-template').hide()
     }).then(fillSelect).then(filterImage)
@@ -33,13 +36,8 @@ Animals.readJson2 = () => {
       $('#photo-template2').hide()
     }).then(fillSelect2).then(filterImage2)
 }
-// $.ajax('data/page-2.json', ajaxSettings)
-//   .then(data =>) {
-//     data.forEach(item => {
-//       let Animal = new Animals(item);
-//       Animal.render();
-//     })
-//   }
+
+
 
 function Animals(Animal) {
     this.image_url = Animal.image_url;
@@ -50,18 +48,16 @@ function Animals(Animal) {
     animalsArr.push(this);
 }
 Animals.prototype.render = function () {
-    let $AnimalClone = $('<div></div>');
-    $AnimalClone.html($('#photo-template').html());
-    $AnimalClone.find('h2').text(this.title);
-    $AnimalClone.find('img').attr('src', this.image_url);
-    $AnimalClone.find('img').attr('alt', this.description);
-    $AnimalClone.find('p').text(this.keyword);
-    $AnimalClone.find('p').text(this.horns);
-    $AnimalClone.removeClass('#photo-template');
-    $AnimalClone.attr('class', this.keyword);
-    $AnimalClone.attr('id', this.title);
-    $('main').append($AnimalClone)
+
+  let $AnimalClone = $(templateId).html();
+
+  let html = Mustache.render($AnimalClone, this);
+  // console.log(item)
+  return html
+
 }
+
+
 
 Animals.prototype.render2 = function () {
   let $AnimalClone = $('<div></div>');
@@ -77,7 +73,6 @@ Animals.prototype.render2 = function () {
   $('main').append($AnimalClone)
 }
 function fillSelect() {
-  console.log(animalsArr)
   for (let i = 0; i < animalsArr.length; i++) {
     let newOption = $('#default1').clone();
     newOption.text(animalsArr[i].title);
