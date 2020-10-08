@@ -13,7 +13,6 @@ Animals.readJson = () => {
     .then(data => {
       data.forEach(item => {
         let Animal = new Animals(item);
-        console.log(Animal);
         Animal.render();
       })
       $('#photo-template').hide()
@@ -71,7 +70,6 @@ Animals.prototype.render2 = function () {
   $('main').append($AnimalClone)
 }
 function fillSelect() {
-  console.log(animalsArr)
   for (let i = 0; i < animalsArr.length; i++) {
     let newOption = $('#default1').clone();
     newOption.text(animalsArr[i].title);
