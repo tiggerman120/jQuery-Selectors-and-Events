@@ -17,7 +17,7 @@ Animals.readJson = () => {
         $('main').append(Animal.render())
       })
       $('#photo-template').hide()
-    }).then(fillSelect).then(filterImage).then(filterForm)
+    }).then(fillSelect).then(filterImage)
 }
 
 Animals.readJson2 = () => {
@@ -57,11 +57,8 @@ Animals.prototype.render2 = function () {
 function fillSelect() {
   for (let i = 0; i < animalsArr.length; i++) {
     let newOption = $('#default1').clone();
-    console.log(newOption);
     newOption.text(animalsArr[i].keyword);
     newOption.attr('value', animalsArr[i].keyword);
-    console.log(newOption)
-
     $('#list1').append(newOption);
   }
 }
@@ -78,7 +75,6 @@ function filterImage() {
 function fillSelect2() {
   for (let i = 0; i < animalsArr.length; i++) {
     let newOption = $('#default2').clone();
-    console.log(newOption);
     newOption.text(animalsArr[i].keyword);
     newOption.attr('value', animalsArr[i].keyword);
     $('#list2').append(newOption);
@@ -92,14 +88,7 @@ function filterImage2() {
   })
 }
 
-function filterForm() {
-  $('form').on('change', function () {
-    let title = $('input').val();
-    console.log(title);
-    $('section').hide();
-    $(`${title}`).show();
-  })
-}
+
 $(() => Animals.readJson());
 $(() => Animals.readJson2());
 
