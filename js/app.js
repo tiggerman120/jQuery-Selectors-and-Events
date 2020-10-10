@@ -9,6 +9,7 @@ const ajaxSettings = {
 }
 
 Animals.readJson = () => {
+
   $.ajax('data/page-1.json', ajaxSettings)
     .then(data => {
       data.forEach(item => {
@@ -30,20 +31,23 @@ Animals.readJson2 = () => {
     }).then(fillSelect2).then(filterImage2)
 }
 
-function Animals(Animal) {
-  this.image_url = Animal.image_url;
-  this.title = Animal.title;
-  this.description = Animal.description;
-  this.keyword = Animal.keyword;
-  this.horns = Animal.horns;
-  animalsArr.push(this);
-}
 
+
+function Animals(Animal) {
+    this.image_url = Animal.image_url;
+    this.title = Animal.title;
+    this.description = Animal.description;
+    this.keyword = Animal.keyword;
+    this.horns = Animal.horns;
+    animalsArr.push(this);
+}
 Animals.prototype.render = function () {
+
   let $AnimalClone = $(templateId).html();
   let html = Mustache.render($AnimalClone, this);
   return html
 }
+
 
 Animals.prototype.render2 = function () {
   let $AnimalClone = $(templateId2).html();
@@ -98,3 +102,4 @@ function filterForm() {
 }
 $(() => Animals.readJson());
 $(() => Animals.readJson2());
+
