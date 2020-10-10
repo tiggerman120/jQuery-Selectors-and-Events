@@ -2,13 +2,13 @@
 
 let animalsArr = [];
 let templateId = '#animals-template';
+let templateId2 = '#animals-template2';
+const ajaxSettings = {
+  method: 'get',
+  dataType: 'json'
+}
 
 Animals.readJson = () => {
-
-  const ajaxSettings = {
-    method: 'get',
-    dataType: 'json'
-  }
 
   $.ajax('data/page-1.json', ajaxSettings)
     .then(data => {
@@ -17,19 +17,15 @@ Animals.readJson = () => {
         $('main').append(Animal.render())
       })
       $('#photo-template').hide()
-    }).then(fillSelect).then(filterImage)
+    }).then(fillSelect).then(filterImage).then(filterForm)
 }
 
 Animals.readJson2 = () => {
-  const ajaxSettings2 = {
-    method: 'get',
-    dataType: 'json'
-  }
-  $.ajax('data/page-2.json', ajaxSettings2)
+  $.ajax('data/page-2.json', ajaxSettings)
     .then(data => {
       data.forEach(item => {
         let Animal = new Animals(item);
-        Animal.render2();
+        $('main').append(Animal.render2())
       })
       $('#photo-template2').hide()
     }).then(fillSelect2).then(filterImage2)
@@ -48,50 +44,42 @@ function Animals(Animal) {
 Animals.prototype.render = function () {
 
   let $AnimalClone = $(templateId).html();
-
   let html = Mustache.render($AnimalClone, this);
-  // console.log(item)
   return html
-
 }
-
 
 
 Animals.prototype.render2 = function () {
-  let $AnimalClone = $('<div></div>');
-  $AnimalClone.html($('#photo-template2').html());
-  $AnimalClone.find('h2').text(this.title);
-  $AnimalClone.find('img').attr('src', this.image_url);
-  $AnimalClone.find('img').attr('alt', this.description);
-  $AnimalClone.find('p').text(this.keyword);
-  $AnimalClone.find('p').text(this.horns);
-  $AnimalClone.removeClass('#photo-template2');
-  $AnimalClone.attr('class', this.keyword);
-  $AnimalClone.attr('id', this.title);
-  $('main').append($AnimalClone)
-}
+  let $AnimalClone = $(templateId2).html();
+  let html = Mustache.render($AnimalClone, this);
+  return html
+}//this isnt getting the keyword values in newOption
 function fillSelect() {
   for (let i = 0; i < animalsArr.length; i++) {
     let newOption = $('#default1').clone();
-    newOption.text(animalsArr[i].title);
+    console.log(newOption);
+    newOption.text(animalsArr[i].keyword);
     newOption.attr('value', animalsArr[i].keyword);
-    $('#list').append(newOption);
+    console.log(newOption)
+
+    $('#list1').append(newOption);
   }
 }
+
 function filterImage() {
   $('select').on('change', function () {
     let keyword = $('select').val();
-    $('div').hide();
+    console.log(keyword);
+    $('section').hide();
     $(`.${keyword}`).show();
   })
 }
 
-
-
 function fillSelect2() {
   for (let i = 0; i < animalsArr.length; i++) {
     let newOption = $('#default2').clone();
-    newOption.text(animalsArr[i].title);
+    console.log(newOption);
+    newOption.text(animalsArr[i].keyword);
     newOption.attr('value', animalsArr[i].keyword);
     $('#list2').append(newOption);
   }
@@ -99,13 +87,19 @@ function fillSelect2() {
 function filterImage2() {
   $('select').on('change', function () {
     let keyword = $('select').val();
-    $('div').hide();
+    $('section').hide();
     $(`.${keyword}`).show();
+  })
+}
+
+function filterForm() {
+  $('form').on('change', function () {
+    let title = $('input').val();
+    console.log(title);
+    $('section').hide();
+    $(`${title}`).show();
   })
 }
 $(() => Animals.readJson());
 $(() => Animals.readJson2());
-
-
-
 

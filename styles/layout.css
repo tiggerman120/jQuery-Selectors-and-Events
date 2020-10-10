@@ -1,0 +1,26 @@
+header {
+  display: flex;
+  flex-flow: row;
+  height: 100px;
+  width: 100vw;
+  justify-content: center;
+}
+
+section {
+  width: 350px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+main {
+  background-color: black;
+  color: rgb(212, 169, 25);
+  outline: black solid 1px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
