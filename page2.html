@@ -4,25 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script id="animals-template2" type="x-tmpl-mustache">
-    <section>
+    <section class="{{ keyword }}">
       <h2>{{ title }}</h2>
-      <img src="{{ image_url }}" alt="">
+      <img src="{{ image_url }}" alt="{{ keyword }}">
       <p>about: {{ description }}</p>
       <p>keyword: {{ keyword }}</p>
       <p>number-of-horns: {{ horns }}</p>
     </section>
 </script>
-<link rel="stylesheet" href="styles/module.css">
+<link rel="stylesheet" href="styles/style.css">
   <title>Images</title>
 </head>
 
 <body>
   <header>
-    <a href="index.html">home</a>
+    <button><a href="index.html">home</a></button>
     <h1>The Gallery of Horns</h1>
     <select id="list2">
         <option id="default2" value="default2">Filter by Keyword</option>
     </select>
+    <form>
+      <input type="radio" name="horns" id="horns"></input>
+      <label for="horns">Horns</label>
+      <input type="radio" name="title" id="title"></input>
+      <label for="title">Title</label>
 </header>
 <main>
     <section id="photo-template2">

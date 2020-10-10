@@ -6,27 +6,36 @@
 <head>
     <title>The Gallery of Horns</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/module.css">
+    <link rel="stylesheet" href="styles/style.css">
     <script id="animals-template" type="x-tmpl-mustache">
-        <section>
+        <section class="{{ keyword }}" id="{{ title }}">
           <h2>{{ title }}</h2>
-          <img src="{{ image_url }}" alt="{{ keyword }}">
+          <img src="{{ image_url }}" alt="{{ horns }}"/>
           <p>about: {{ description }}</p>
           <p>keyword: {{ keyword }}</p>
           <p>number-of-horns: {{ horns }}</p>
         </section>
     </script>
 </head>
+<!-- future feature needs selectors radio or some other kind of selector-->
 
 <body>
+
     
-    <a href="page2.html">Next page</a>
     <header>
         <h1>The Gallery of Horns</h1>
-        <select id="list">
-            <option id="default1" value="default">Filter by Keyword</option>
+        <button><a href="page2.html">Next page</a></button>
+        <select id="list1">
+            <option id="default1" value="default1">Filter by Keyword</option>
         </select>
+        <form>
+            <input type="radio" name="horns" id="horns"></input>
+            <label for="horns">Horns</label>
+            <input type="radio" name="title" id="title"></input>
+            <label for="title">Title</label>
+        </form>
     </header>
+
     <main>
         <section id="photo-template">
             <h2></h2>
