@@ -16,7 +16,7 @@ Animals.readJson = () => {
         $('main').append(Animal.render())
       })
       $('#photo-template').hide()
-    }).then(fillSelect).then(filterImage)
+    }).then(fillSelect).then(filterImage).then(listenToTitle)
 }
 
 Animals.readJson2 = () => {
@@ -83,7 +83,19 @@ function filterImage2() {
     $(`.${keyword}`).show();
   })
 }
+function listenToTitle() {
+  $('#title').on('change', function () {
+    $('section').hide();
+    sortTitles().show();
+  })
+}
 
+function sortTitles() {
+  return animalsArr.sort((a, b) => a.title > b.title ? 1: -1);
+}
+// let sortHorns = () => {
+//   return animalsArr.sort((a, b) => a.horns > b.horns ? 1: -1);
+// }
 
 $(() => Animals.readJson());
 $(() => Animals.readJson2());
